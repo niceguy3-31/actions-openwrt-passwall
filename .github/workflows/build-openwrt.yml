@@ -62,8 +62,9 @@ jobs:
         sudo -E apt-get -qq clean
 
     - name: Clone source code
-      run: git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
-
+      run: |
+        git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
+        git clone https://github.com/niceguy3-31/luci-app-koolproxy.git openwrt/package/
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
 
